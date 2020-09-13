@@ -1,0 +1,123 @@
+﻿<Window x:Class="MagicSquare.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:local="clr-namespace:MagicSquare"
+		mc:Ignorable="d"
+		Title="Магический квадрат"
+		Height="560"
+		Width="800"
+		Icon="\Icon\MagicSquare.ico"
+		Background="Black">
+
+	<Grid ShowGridLines="False"
+		  Background="White"
+		  Margin="3">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="40" />
+			<RowDefinition  Height="1.8*" />
+			<RowDefinition Height="0.4*" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.9*" />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<Button BorderBrush="{x:Null}"
+				Background="{x:Null}"
+				Grid.Row="0"
+				Grid.Column="1"
+				x:Name="ButtonHelp"
+				HorizontalAlignment="Right"
+				Margin="1,10,10,1">
+			<Image Source="Icon/Question.ico">
+
+			</Image>
+		</Button>
+
+		<Viewbox Grid.Row="2"
+				 Grid.Column="0">
+			<TextBlock Margin="3"
+					   FontFamily="arial"
+					   HorizontalAlignment="Center"
+					   VerticalAlignment="Center"
+					   x:Name="TextBlockSumma" />
+		</Viewbox>
+
+		<StackPanel Grid.Column="1"
+					Orientation="Horizontal"
+					Grid.Row="2">
+			<Button Margin="10,10,10,10"
+					Background="{x:Null}"
+					BorderBrush="{x:Null}"
+					x:Name="ButtonReset">
+				<Image Source="Icon/Reset.ico"></Image>
+			</Button>
+
+			<Viewbox Margin="10,10,10,10">
+				<Canvas Height="100"
+						Width="100">
+					<ComboBox HorizontalContentAlignment="Center"
+							  VerticalContentAlignment="Center"
+							  HorizontalAlignment="Center"
+							  VerticalAlignment="Center"
+							  FontSize="40"
+							  Height="100"
+							  Width="100"
+							  BorderBrush="{x:Null}"
+							  Background="{x:Null}"
+							  x:Name="ComboBoxSize"></ComboBox>
+				</Canvas>
+			</Viewbox>
+		</StackPanel>
+
+		<Grid Grid.Column="1"
+			  Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="98*" />
+				<ColumnDefinition Width="91*" />
+				<ColumnDefinition Width="18*" />
+			</Grid.ColumnDefinitions>
+
+			<ListBox x:Name="ListViewLog"
+					 Grid.Column="0">
+				<ListBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Path= Record}"
+								   TextWrapping="Wrap"
+								   TextTrimming="WordEllipsis"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Center"></TextBlock>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			<TextBlock Margin="5"
+					   TextAlignment="Center"
+					   Grid.Column="1"
+					   Text="Игра Магический Куб представляет собой математическую загадку. 
+					   В кадратную матрицу записанны особые числа. 
+					   Если выбрать числа в количестве равном размеру матрицы, то их сумма будет всегда одинаковой. 
+					   При выборе числа необходимо вычеркнуть строку и колонку в которой находится выбранное число, 
+					   после чего продолжить выбирать, пока числа еще оставлись в матрице."
+					   TextWrapping="Wrap"
+					   Grid.ColumnSpan="2" />
+		</Grid>
+
+		<Viewbox Grid.Row="1">
+			<Canvas Height="100"
+					Width="100">
+				<WrapPanel Background="Black"
+						   Width="100"
+						   Height="100"
+						   Grid.Row="0"
+						   Grid.Column="0"
+						   x:Name="WrapPanelField">
+
+				</WrapPanel>
+			</Canvas>
+		</Viewbox>
+	</Grid>
+
+</Window>
